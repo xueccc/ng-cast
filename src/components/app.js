@@ -1,24 +1,24 @@
 angular.module('video-player')
 
-.component('app', {
-   controller: function(youTube) {
-    this.$onInit = function() {
-      youTube.search(this.searchResults, 'shiba');
-    }
-    this.videos = window.exampleVideoData;
-    this.currentVideo = this.videos[0];  
-    this.selectVideo = function(video) {
-      this.currentVideo = video;
-    }.bind(this); 
-    this.searchVideos = youTube.search;
-    this.slowSearch = _.debounce(youTube.search, 1000)
-    this.searchResults = function(data) {
-      this.videos = data;
-      this.currentVideo = data[0];
-    }.bind(this);
-  },
+  .component('app', {
+    controller: function(youTube) {
+      this.$onInit = function() {
+        youTube.search(this.searchResults, 'shiba');
+      };
+      this.videos = window.exampleVideoData;
+      this.currentVideo = this.videos[0];  
+      this.selectVideo = function(video) {
+        this.currentVideo = video;
+      }.bind(this); 
+      this.searchVideos = youTube.search;
+      this.slowSearch = _.debounce(youTube.search, 1000);
+      this.searchResults = function(data) {
+        this.videos = data;
+        this.currentVideo = data[0];
+      }.bind(this);
+    },
   
-  template: `
+    template: `
     <div id="app container">
       <nav class="navbar">
         <div class="col-md-6 col-md-offset-3">
@@ -45,4 +45,4 @@ angular.module('video-player')
     </div>  
   `
   
-});
+  });
